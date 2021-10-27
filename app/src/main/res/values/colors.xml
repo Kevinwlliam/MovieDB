@@ -9,4 +9,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gold">#FFEE00</color>
     <color name="GOLD">#D4AF37</color>
+    <color name="newcolor">#1E1E1E</color>
+    <color name="transparent">#00000000</color>
+    <color name="dark_red">#B3B10000</color>
+    <color name="lite_red">#FF0000</color>
+    <color name="gray">#B6B6B6</color>
 </resources>

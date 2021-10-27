@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
         viewModel = new ViewModelProvider(MainActivity.this).get(MovieViewModel.class);
         btn_hit = findViewById(R.id.btn_hit_man);
         txt_show = findViewById(R.id.txt_show_main);

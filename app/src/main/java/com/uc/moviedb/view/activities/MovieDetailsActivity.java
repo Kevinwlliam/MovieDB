@@ -19,8 +19,8 @@ import java.util.ArrayList;
 
 public class MovieDetailsActivity extends AppCompatActivity {
 
-    private TextView lbl_text, text_title, text_date, text_overview, text_rating, text_genre;
-    private String movie_id = "", title_id = "", date_id, overview_id, rating_id, img_movie;
+    private TextView lbl_text, text_title, text_date, text_overview, text_rating, text_genre, text_popular_details;
+    private String movie_id = "", title_id = "", date_id, overview_id, rating_id, img_movie, popular_id;
     private ArrayList<Integer> genre_id;
     private ImageView img_movie_details;
     private MovieViewModel view_model;
@@ -29,6 +29,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_details);
+        getSupportActionBar().hide();
 
         Intent intent = getIntent();
         movie_id = intent.getStringExtra("movie_id");
@@ -36,6 +37,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
         date_id = intent.getStringExtra("date_id");
         overview_id = intent.getStringExtra("overview_id");
         rating_id = intent.getStringExtra("rating_id");
+        popular_id = intent.getStringExtra("popular_id");
         genre_id = intent.getIntegerArrayListExtra("genre_id");
         img_movie = intent.getStringExtra("img_movie_details");
 
@@ -51,6 +53,8 @@ public class MovieDetailsActivity extends AppCompatActivity {
         text_rating = findViewById(R.id.text_rating_details);
         text_rating.setText(rating_id);
         text_genre = findViewById(R.id.text_genre_id);
+        text_popular_details = findViewById(R.id.text_popular_details);
+        text_popular_details.setText(popular_id);
 //        text_genre.setText(genre_id);
         img_movie_details = findViewById(R.id.img_movie_details);
         String img_path = Const.IMG_URL + img_movie;
