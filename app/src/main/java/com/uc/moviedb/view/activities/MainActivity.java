@@ -1,4 +1,4 @@
-package com.uc.moviedb.view;
+package com.uc.moviedb.view.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;

@@ -2,7 +2,7 @@ package com.uc.moviedb.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Parcelable;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,15 +11,14 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.uc.moviedb.R;
 import com.uc.moviedb.helper.Const;
 import com.uc.moviedb.model.NowPlaying;
-import com.uc.moviedb.view.MainActivity;
-import com.uc.moviedb.view.MovieDetailsActivity;
-import com.uc.moviedb.view.NowPlayingActivity;
+import com.uc.moviedb.view.activities.MovieDetailsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,20 +49,24 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Ca
         holder.lbl_overview.setText(results.getOverview());
         holder.lbl_release_date.setText(results.getRelease_date());
         Glide.with(context).load(Const.IMG_URL + results.getPoster_path()).into(holder.img_poster);
-        holder.cv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, MovieDetailsActivity.class);
-                intent.putExtra("movie_id","" + results.getId());
-                intent.putExtra("title_id","" + results.getTitle());
-                intent.putExtra("date_id","Release Date : " + results.getRelease_date());
-                intent.putExtra("overview_id", "" + results.getOverview());
-                intent.putExtra("rating_id", "Rating : " + results.getVote_average());
-                intent.putIntegerArrayListExtra("genre_id", (ArrayList<Integer>)results.getGenre_ids());
-                intent.putExtra("img_movie_details", "" + results.getPoster_path());
-                context.startActivity(intent);
-            }
-        });
+//        holder.cv.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(context, MovieDetailsActivity.class);
+//                intent.putExtra("movie_id","" + results.getId());
+//                intent.putExtra("title_id","" + results.getTitle());
+//                intent.putExtra("date_id","Release Date : " + results.getRelease_date());
+//                intent.putExtra("overview_id", "" + results.getOverview());
+//                intent.putExtra("rating_id", "Rating : " + results.getVote_average());
+//                intent.putIntegerArrayListExtra("genre_id", (ArrayList<Integer>)results.getGenre_ids());
+//                intent.putExtra("img_movie_details", "" + results.getPoster_path());
+//                context.startActivity(intent);
+//
+//                Bundle bundle = new Bundle();
+//                bundle.putString("movieId", ""+results.getId());
+//                Navigation.findNavController(v).navigate(R.id.action_nowPlayingFragment_to_movieDetailsFragment, bundle);
+//            }
+//        });
 
     }
 

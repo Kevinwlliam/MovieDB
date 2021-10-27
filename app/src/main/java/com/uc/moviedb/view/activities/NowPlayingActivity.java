@@ -1,4 +1,4 @@
-package com.uc.moviedb.view;
+package com.uc.moviedb.view.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -36,6 +36,8 @@ public class NowPlayingActivity extends AppCompatActivity {
             NowPlayingAdapter adapter = new NowPlayingAdapter(NowPlayingActivity.this);
             adapter.setListNowPlaying(nowPlaying.getResults());
             rv_now_playing.setAdapter(adapter);
+
+
         }
     };
 }

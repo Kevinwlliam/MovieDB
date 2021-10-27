@@ -1,9 +1,8 @@
-package com.uc.moviedb.view;
+package com.uc.moviedb.view.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,10 +11,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.uc.moviedb.R;
-import com.uc.moviedb.adapter.NowPlayingAdapter;
 import com.uc.moviedb.helper.Const;
 import com.uc.moviedb.model.Movies;
-import com.uc.moviedb.model.NowPlaying;
 import com.uc.moviedb.viewmodel.MovieViewModel;
 
 import java.util.ArrayList;
