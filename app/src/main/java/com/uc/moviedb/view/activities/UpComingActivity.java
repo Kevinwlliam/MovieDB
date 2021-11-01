@@ -26,7 +26,7 @@ public class UpComingActivity extends AppCompatActivity {
 
         rv_up_coming = findViewById(R.id.rv_up_coming);
         view_model = new ViewModelProvider(UpComingActivity.this).get(MovieViewModel.class);
-        view_model.getUpComing();
+        view_model.getUpComing(1);
         view_model.getResultUpComing().observe(UpComingActivity.this, showUpComing);
     }
 

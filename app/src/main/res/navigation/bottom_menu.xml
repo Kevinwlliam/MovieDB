@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/movieDetailsFragment"
-        android:name="com.uc.moviedb.view.fragments.NowPlayingFragment"
+        android:name="com.uc.moviedb.view.fragments.MovieDetailsFragment"
         android:label="@string/movie_details"
         tools:layout="@layout/fragment_movie_details" >
         <argument
@@ -22,12 +22,16 @@
         android:label="@string/now_playing"
         tools:layout="@layout/fragment_now_playing" >
         <action
-            android:id="@+id/action_nowPlayingFragment_to_movieDetailsFragment"
+            android:id="@+id/action_nowPlayingFragment_to_movieDetailsFragment2"
             app:destination="@id/movieDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/upComingFragment"
         android:name="com.uc.moviedb.view.fragments.UpComingFragment"
         android:label="@string/up_coming"
-        tools:layout="@layout/fragment_up_coming" />
+        tools:layout="@layout/fragment_up_coming" >
+        <action
+            android:id="@+id/action_upComingFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment" />
+    </fragment>
 </navigation>

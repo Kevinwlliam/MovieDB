@@ -11,7 +11,7 @@
     <color name="GOLD">#D4AF37</color>
     <color name="newcolor">#1E1E1E</color>
     <color name="transparent">#00000000</color>
-    <color name="dark_red">#B3B10000</color>
+    <color name="dark_red">#FD8F0808</color>
     <color name="lite_red">#FF0000</color>
     <color name="gray">#B6B6B6</color>
 </resources>

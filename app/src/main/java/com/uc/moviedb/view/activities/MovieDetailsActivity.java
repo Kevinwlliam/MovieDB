@@ -19,8 +19,15 @@ import java.util.ArrayList;
 
 public class MovieDetailsActivity extends AppCompatActivity {
 
-    private TextView lbl_text, text_title, text_date, text_overview, text_rating, text_genre, text_popular_details;
-    private String movie_id = "", title_id = "", date_id, overview_id, rating_id, img_movie, popular_id;
+    private TextView lbl_text;
+    private TextView text_title;
+    private TextView text_date;
+    private TextView text_overview;
+    private TextView text_rating;
+    private TextView text_genre;
+    private TextView text_popular_details;
+    private String text_product_companies;
+    private String movie_id = "", title_id = "", date_id, overview_id, rating_id, img_movie, popular_id, product_id;
     private ArrayList<Integer> genre_id;
     private ImageView img_movie_details;
     private MovieViewModel view_model;
@@ -72,6 +79,21 @@ public class MovieDetailsActivity extends AppCompatActivity {
     }
 
     private Observer<Movies> showNonPlaying = new Observer<Movies>() {
+        @Override
+        public void onChanged(Movies movies) {
+            String result = "";
+            for (int i = 0; i < genre_id.size(); i++){
+                for (int j = 0; j < movies.getGenres().size(); j++){
+                    if (genre_id.get(i) == movies.getGenres().get(j).getId()){
+                        result += movies.getGenres().get(j).getName();
+                    }
+                }
+            }
+            text_genre.setText(result);
+        }
+    };
+
+    private Observer<Movies> showProductCompany= new Observer<Movies>() {
         @Override
         public void onChanged(Movies movies) {
             String result = "";

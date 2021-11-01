@@ -31,6 +31,9 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Ca
     public void setListNowPlaying(List<NowPlaying.Results> listNowPlaying){
         this.listNowPlaying = listNowPlaying;
     }
+    public void addListNowPlaying(List<NowPlaying.Results> listNowPlaying){
+        this.listNowPlaying.addAll(listNowPlaying);
+    }
     public NowPlayingAdapter(Context context){
         this.context = context;
     }
@@ -49,31 +52,37 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Ca
         holder.lbl_overview.setText(results.getOverview());
         holder.lbl_release_date.setText(results.getRelease_date());
         Glide.with(context).load(Const.IMG_URL + results.getPoster_path()).into(holder.img_poster);
-        holder.cv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, MovieDetailsActivity.class);
-                intent.putExtra("movie_id","" + results.getId());
-                intent.putExtra("title_id","" + results.getTitle());
-                intent.putExtra("date_id","Release Date : " + results.getRelease_date());
-                intent.putExtra("overview_id", "" + results.getOverview());
-                intent.putExtra("rating_id", "Rating : " + results.getVote_average());
-                intent.putExtra("popular_id", "Popularity : " + results.getPopularity());
-                intent.putIntegerArrayListExtra("genre_id", (ArrayList<Integer>)results.getGenre_ids());
-                intent.putExtra("img_movie_details", "" + results.getPoster_path());
-                context.startActivity(intent);
-
-                Bundle bundle = new Bundle();
-                bundle.putString("movieId", ""+results.getId());
-                Navigation.findNavController(v).navigate(R.id.action_nowPlayingFragment_to_movieDetailsFragment, bundle);
-            }
-        });
+//        holder.cv.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(context, MovieDetailsActivity.class);
+//                intent.putExtra("title_id","" + results.getOriginal_title());
+//                intent.putExtra("date_id","Release Date : " + results.getRelease_date());
+//                intent.putExtra("overview_id", "" + results.getOverview());
+//                intent.putExtra("rating_id", "Rating : " + results.getVote_average());
+//                intent.putExtra("popular_id", "Popularity : " + results.getPopularity());
+//                intent.putIntegerArrayListExtra("genre_id", (ArrayList<Integer>)results.getGenre_ids());
+//                intent.putExtra("img_movie_details", "" + results.getPoster_path());
+//                context.startActivity(intent);
+//
+////                Bundle bundle = new Bundle();
+////                bundle.putString("movieId", ""+results.getId());
+////                Navigation.findNavController(v).navigate(R.id.action_nowPlayingFragment_to_movieDetailsFragment, bundle);
+//            }
+//        });
 
     }
 
     @Override
     public int getItemCount() {
-        return getListNowPlaying().size();
+        int itemCount;
+        if (getListNowPlaying() != null && !getListNowPlaying().isEmpty()) {
+            itemCount = getListNowPlaying().size();
+        }
+        else {
+            itemCount = 0;
+        }
+        return itemCount;
     }
 
     public class CardViewViewHolder extends RecyclerView.ViewHolder {
