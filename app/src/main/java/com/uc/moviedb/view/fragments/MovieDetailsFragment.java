@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.uc.moviedb.LoadingD;
 import com.uc.moviedb.R;
 import com.uc.moviedb.adapter.ProductCompanyAdapter;
 import com.uc.moviedb.helper.Const;
@@ -83,6 +84,7 @@ public class MovieDetailsFragment extends Fragment {
     private ImageView img_movie_details, img_backdrop_movie_details_fragment, img_product_company;
     private MovieViewModel view_model;
     private RecyclerView rv_product_company;
+    private LoadingD loadingD;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -107,6 +109,10 @@ public class MovieDetailsFragment extends Fragment {
         view_model = new ViewModelProvider(getActivity()).get(MovieViewModel.class);
         view_model.getMovieById(movieId);
         view_model.getResultGetMovieById().observe(getActivity(), showMovieDetails);
+        view_model.getResultGetMovieById().observe(getActivity(), showProductCompany);
+
+        loadingD = new LoadingD(getActivity());
+        loadingD.startLoadingDialog();
 
         return view;
     }
@@ -134,6 +140,7 @@ public class MovieDetailsFragment extends Fragment {
             text_popular_details.setText("Popularity : "+movies.getPopularity());
             Glide.with(MovieDetailsFragment.this).load(Const.IMG_URL + movies.getPoster_path().toString()).into(img_movie_details);
             Glide.with(MovieDetailsFragment.this).load(Const.IMG_URL + movies.getBackdrop_path().toString()).into(img_backdrop_movie_details_fragment);
+            loadingD.stopProgress();
         }
     };
 
@@ -160,9 +167,9 @@ public class MovieDetailsFragment extends Fragment {
                     Toast.makeText(getActivity(), name, Toast.LENGTH_SHORT).show();
                 }
             });
-            String img_path = Const.IMG_URL + img_product_company;
-            Glide.with(MovieDetailsFragment.this).load(img_path).into(img_product_company);
-            text_product_company.setText(""+movies.getProduction_companies());
+//            String img_path = Const.IMG_URL + img_product_company;
+//            Glide.with(MovieDetailsFragment.this).load(img_path).into(img_product_company);
+//            text_product_company.setText(""+movies.getProduction_companies());
         }
 
     };
